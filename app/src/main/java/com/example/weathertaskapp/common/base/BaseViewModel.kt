@@ -1,46 +1,34 @@
 package com.example.weathertaskapp.common.base
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavDirections
 import com.example.weathertaskapp.common.utils.Event
-import com.example.weathertaskapp.navigation.NavigationCommand
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 open class BaseViewModel  : ViewModel()  {
 
     // FOR SNACKBAR ERROR HANDLER
-    private val _progressBar = MutableLiveData<Event<Boolean>>()
-    val progressBar: LiveData<Event<Boolean>> get() = _progressBar
+    private val _progressBar = MutableStateFlow(Event(false))
+    val progressBar: Flow<Event<Boolean>> get() = _progressBar
 
-    protected val _snackBarSecondaryMessage = MutableLiveData<Event<Int>>()
-    val snackBarSecondaryMessage: LiveData<Event<Int>> get() = _snackBarSecondaryMessage
+    fun setProgressBarVisibility(visible: Boolean) {
+        _progressBar.value = Event(visible)
+    }
 
     // FOR ERROR DIALOG HANDLER
-    private val _dialogError = MutableLiveData<Event<Int>>()
-    val dialogError: LiveData<Event<Int>> get() = _dialogError
+    private val _dialogError = MutableStateFlow(Event(0))
+    val dialogError: Flow<Event<Int>> get() = _dialogError
 
     // FOR ERROR DIALOG STRING HANDLER
-    private val _dialogErrorString = MutableLiveData<Event<String>>()
-    val dialogErrorString: LiveData<Event<String>> get() = _dialogErrorString
-
-    // FOR NAVIGATION
-    private val _navigation = MutableLiveData<Event<NavigationCommand>>()
-    val navigation: LiveData<Event<NavigationCommand>> = _navigation
+    private val _dialogErrorString = MutableStateFlow(Event(""))
+    val dialogErrorString: Flow<Event<String>> get() = _dialogErrorString
 
     // FOR BACK HANDLER
-    private val _backEvent = MutableLiveData<Event<Boolean>>()
-    val backEvent: LiveData<Event<Boolean>> get() = _backEvent
+    private val _backEvent = MutableStateFlow<Event<Boolean>>(Event(false))
+    val backEvent: Flow<Event<Boolean>> get() = _backEvent
 
-    // FOR UNAUTHORIZED HANDLER
-    private val _unauthorizedEvent = MutableLiveData<Event<Boolean>>()
-    val unauthorizedEvent: LiveData<Event<Boolean>> get() = _unauthorizedEvent
-    /**
-     * Convenient method to handle navigation from a [ViewModel]
-     */
-    fun navigate(directions: NavDirections) {
-        _navigation.value = Event(NavigationCommand.To(directions))
-    }
+    private val _unauthorizedEvent = MutableStateFlow<Event<Boolean>>(Event(false))
+    val unauthorizedEvent: Flow<Event<Boolean>> get() = _unauthorizedEvent
 
     fun showProgressBar() {
         _progressBar.value = Event(true)

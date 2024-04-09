@@ -148,7 +148,7 @@ class HomeFragment: BaseFragment() {
                 locationPermission.launch(notGrantedPermissions.toTypedArray())
             }
         }else{
-            Toast.makeText(requireContext(), "Location permission granted", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "Location permission granted", Toast.LENGTH_SHORT).show()
         }
     }
 

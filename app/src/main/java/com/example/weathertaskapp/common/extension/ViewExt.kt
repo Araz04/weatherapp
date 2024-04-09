@@ -8,11 +8,12 @@ import android.graphics.drawable.ColorDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.weathertaskapp.R
 import com.example.weathertaskapp.common.utils.Event
 import com.example.weathertaskapp.ui.dialogs.SimpleErrorMessageDialog
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 //TODO may produce nullPointerException
 lateinit var dialog: AlertDialog
@@ -25,50 +26,32 @@ fun Fragment.showErrorDialog(errorText: String) {
         .show()
 }
 
-fun Fragment.setupErrorDialog(
-    lifecycleOwner: LifecycleOwner,
-    errorDialogEvent: LiveData<Event<Int>>
-) {
-    errorDialogEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { res ->
-            context?.let { showErrorDialog(it.getString(res)) }
-        }
-    })
-}
-
-fun Fragment.setupErrorStringDialog(
-    lifecycleOwner: LifecycleOwner,
-    errorDialogStringEvent: LiveData<Event<String>>
-) {
-    errorDialogStringEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { error ->
-            context?.let { showErrorDialog(error) }
-        }
-    })
-}
-
 fun Fragment.setupAppErrorDialog(
     supportFragmentManager: FragmentManager,
     lifecycleOwner: LifecycleOwner,
-    errorDialogStringEvent: LiveData<Event<String>>
+    errorDialogStringFlow: Flow<Event<String>>
 ) {
-    errorDialogStringEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { error ->
-            context?.let { showAppErrorDialog(supportFragmentManager, error) }
+    lifecycleOwner.lifecycleScope.launch {
+        errorDialogStringFlow.collect { event ->
+            event.getContentIfNotHandled()?.let { error ->
+                context?.let { showAppErrorDialog(supportFragmentManager, error) }
+            }
         }
-    })
+    }
 }
 
 fun Fragment.setupAppStringSRCErrorDialog(
     supportFragmentManager: FragmentManager,
     lifecycleOwner: LifecycleOwner,
-    errorDialogStringEvent: LiveData<Event<Int>>
+    errorDialogStringEvent: Flow<Event<Int>>
 ) {
-    errorDialogStringEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { res ->
-            context?.let { showAppErrorDialog(supportFragmentManager, it.getString(res)) }
+    lifecycleOwner.lifecycleScope.launch {
+        errorDialogStringEvent.collect{ event ->
+            event.getContentIfNotHandled()?.let { res ->
+                context?.let { showAppErrorDialog(supportFragmentManager, it.getString(res)) }
+            }
         }
-    })
+    }
 }
 
 fun Fragment.showProgressDialog() {
@@ -77,7 +60,6 @@ fun Fragment.showProgressDialog() {
             dialog.show()
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
-
     }
 }
 
@@ -95,44 +77,48 @@ fun Fragment.hideProgressDialog() {
 
 fun Fragment.setupProgressDialog(
     lifecycleOwner: LifecycleOwner,
-    progressDialogEvent: LiveData<Event<Boolean>>
+    progressDialogFlow: Flow<Event<Boolean>>
 ) {
     val builder: AlertDialog.Builder = AlertDialog.Builder(context)
     builder.setCancelable(false)
-//    builder.setView(R.layout.loading_dialog)
-    dialog = builder.create()
-    progressDialogEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { isShow ->
-            context?.let {
-                if (isShow) {
-                    showProgressDialog()
-                } else {
-                    hideProgressDialog()
+    val dialog = builder.create()
+
+    lifecycleOwner.lifecycleScope.launch {
+        progressDialogFlow.collect { event ->
+            event.getContentIfNotHandled()?.let { isShow ->
+                context?.let {
+                    if (isShow) {
+                        showProgressDialog()
+                    } else {
+                        hideProgressDialog()
+                    }
                 }
             }
         }
-    })
+    }
 }
 
 fun Activity.setupProgressDialog(
     lifecycleOwner: LifecycleOwner,
-    progressDialogEvent: LiveData<Event<Boolean>>
+    progressDialogEvent: Flow<Event<Boolean>>
 ) {
     val builder: AlertDialog.Builder = AlertDialog.Builder(this)
     builder.setCancelable(false)
 //    builder.setView(R.layout.loading_dialog)
     dialog = builder.create()
-    progressDialogEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { isShow ->
-            this?.let {
-                if (isShow) {
-                    showProgressDialog()
-                } else {
-                    hideProgressDialog()
+    lifecycleOwner.lifecycleScope.launch {
+        progressDialogEvent.collect{event ->
+            event.getContentIfNotHandled()?.let { isShow ->
+                this.let {
+                    if (isShow){
+                        showProgressDialog()
+                    }else{
+                        hideProgressDialog()
+                    }
                 }
             }
         }
-    })
+    }
 }
 
 fun Activity.showProgressDialog() {
@@ -155,18 +141,6 @@ fun Activity.hideProgressDialog() {
             e.printStackTrace()
         }
     }
-}
-
-fun Activity.setupErrorCustomDialog(
-    supportFragmentManager: FragmentManager,
-    lifecycleOwner: LifecycleOwner,
-    errorDialogEvent: LiveData<Event<Int>>
-) {
-    errorDialogEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { res ->
-            showCustomErrorDialog(supportFragmentManager, this.getString(res))
-        }
-    })
 }
 
 fun Fragment.showAppErrorDialog(supportFragmentManager: FragmentManager, errorText: String) {
@@ -215,41 +189,15 @@ fun Activity.showCustomErrorDialog(supportFragmentManager: FragmentManager, erro
     }
 }
 
-fun Activity.setupErrorCustomStringDialog(
-    supportFragmentManager: FragmentManager,
+fun Fragment.setupBackHandler(
     lifecycleOwner: LifecycleOwner,
-    errorDialogStringEvent: LiveData<Event<String>>
+    backEvent: Flow<Event<Boolean>>
 ) {
-    errorDialogStringEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let { error ->
-            showCustomErrorDialog(supportFragmentManager, error)
-        }
-    })
-}
-
-fun Fragment.setupBackHandler(lifecycleOwner: LifecycleOwner, backEvent: LiveData<Event<Boolean>>) {
-    backEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let {
-            context?.let { activity?.onBackPressed() }
-        }
-    })
-}
-
-fun Fragment.setupUnauthorizedHandler(
-    lifecycleOwner: LifecycleOwner,
-    unauthorizedEvent: LiveData<Event<Boolean>>
-) {
-    unauthorizedEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let {
-            context?.let {
-                val intent = Intent(
-                    activity, Class.forName("com.logickit.packer.feature.login.LoginActivity")
-                )
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                activity?.startActivity(intent)
-                activity?.finish()
-
+    lifecycleOwner.lifecycleScope.launch {
+        backEvent.collect { event ->
+            event.getContentIfNotHandled()?.let {
+                activity?.onBackPressed()
             }
         }
-    })
+    }
 }
