@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
+    android:paddingTop="@dimen/default_padding_16dp"
+    tools:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivWeatherState"
+        android:layout_width="@dimen/default_padding_24dp"
+        android:layout_height="@dimen/default_padding_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_selected_location"/>
+
+    <TextView
+        android:id="@+id/tvDay"
+        style="@style/LabelMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Today"
+        android:layout_marginStart="@dimen/default_padding_8dp"
+        app:layout_constraintStart_toEndOf="@+id/ivWeatherState"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDayState"
+        style="@style/LabelSDFWeatherType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Text 2"
+        android:paddingStart="@dimen/default_padding_8dp"
+        android:paddingEnd="@dimen/default_padding_8dp"
+        app:layout_constraintStart_toEndOf="@+id/tvDay"
+        app:layout_constraintEnd_toStartOf="@+id/tvHighestLowestDegree"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHighestLowestDegree"
+        style="@style/LabelMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="End Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

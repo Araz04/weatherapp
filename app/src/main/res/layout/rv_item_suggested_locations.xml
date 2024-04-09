@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_padding_12dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvLocationDetails"
+        style="@style/LabelSuggestedLocationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_padding_16dp"
+        android:layout_marginEnd="@dimen/default_padding_16dp"
+        tools:text="city" />
+
+    <TextView
+        android:id="@+id/tvLat"
+        style="@style/LabelSuggestedLocationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_padding_16dp"
+        android:layout_marginTop="@dimen/default_padding_4dp"
+        android:layout_marginEnd="@dimen/default_padding_16dp"
+        tools:text="city" />
+
+    <TextView
+        android:id="@+id/tvLong"
+        style="@style/LabelSuggestedLocationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_padding_16dp"
+        android:layout_marginTop="@dimen/default_padding_4dp"
+        android:layout_marginEnd="@dimen/default_padding_16dp"
+        tools:text="city" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/default_padding_16dp"
+        android:background="@color/line_cyan" />
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Packer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Packer.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="NavigationViewClay">
+        <item name="android:listDivider">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="LabelMain" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textSize">@dimen/text_size_main</item>
+    </style>
+
+    <style name="LabelMainLarge" parent="LabelMain">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="LabelMainXXXLarge" parent="LabelMain">
+        <item name="android:textSize">@dimen/text_size_xxx_large</item>
+    </style>
+
+    <style name="LabelMainTempScales" parent="LabelMain">
+        <item name="android:textSize">@dimen/text_size_x_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LabelDegreeHome" parent="LabelMain">
+        <item name="android:textSize">@dimen/text_home_degree</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:firstBaselineToTopHeight">0dp</item>
+        <item name="android:letterSpacing">-0.05</item>
+    </style>
+
+    //seven days forecast
+    <style name="LabelSevenDaysForecast" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:textSize">@dimen/text_size_main</item>
+    </style>
+
+    <style name="LabelSevenDaysForecastTitle" parent="LabelSevenDaysForecast">
+        <item name="android:textSize">@dimen/text_size_x_large</item>
+    </style>
+
+    <style name="LabelSevenDaysForecastDayOfWeek" parent="LabelSevenDaysForecast">
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+    <style name="LabelSevenDaysForecastDegree" parent="LabelSevenDaysForecast">
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+    <style name="LabelSDFWeatherType" parent="LabelMain">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+
+    </style>
+    //locations
+    <style name="LabelDefaultLocation" parent="LabelMain">
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textSize">@dimen/text_size_main</item>
+    </style>
+
+    <style name="LabelDefaultLocationMiddle" parent="LabelDefaultLocation">
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+    <style name="LabelDefaultLocationLarge" parent="LabelDefaultLocation">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="LabelDefaultLocationXXXLarge" parent="LabelDegreeHome">
+        <item name="android:textSize">@dimen/text_size_xxx_large</item>
+    </style>
+
+    <style name="LabelStyleDialogTitle">
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:textSize">@dimen/text_size_xx_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LabelStyleDialogMessage">
+        <item name="android:textSize">@dimen/text_size_x_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+    </style>
+
+    <style name="LabelTitleSearch" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textColor">@color/text_color_search</item>
+    </style>
+
+    <style name="InputSearchLocation" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">@dimen/text_size_main</item>
+        <item name="android:textColor">@color/text_color_search</item>
+        <item name="android:textColorHint">@color/text_hint_color_search</item>
+        <item name="android:drawablePadding">@dimen/default_padding_8dp</item>
+        <item name="android:background">@drawable/shape_rectangle_search_input_radius_32</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="LabelSuggestedLocationDetails" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_size_main</item>
+        <item name="android:textColor">@color/text_color_search</item>
+    </style>
+</resources>

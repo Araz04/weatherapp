@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.WeatherTaskApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Darker variant of the primary color. -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Accent color. -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.WeatherTaskApp" parent="Base.Theme.WeatherTaskApp" />
+
+    <style name="Theme.WeatherTaskApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WeatherTaskApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WeatherTaskApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

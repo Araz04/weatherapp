@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="manage_cities">Manage Cities</string>
+    <string name="aqi">AQI %s</string>
+    <string name="lowest_highest_degree">%s\u00B0 / %s\u00B0</string>
+    <string name="degree">%s\u00B0</string>
+    <string name="celsius">\u00B0C</string>
+    <string name="fahrenheit">\u00B0F</string>
+    <string name="seven_days_forecast">7-days forecast</string>
+    <string name="weather_state_home">Cloudy %s°C / %s°C</string>
+    <string name="ok_1">OK\n</string>
+    <string name="error">Error</string>
+    <string name="message">Message</string>
+    <string name="cancel_1">Cancel</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_seven_days_forecast">7-days Forecast</string>
+    <string name="default_location">Default Location</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Developed by Araz</string>
+    <string name="nav_header_subtitle">Especially for InConcept Labs</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="enter_location">Enter location</string>
+    <string name="country_state_string_resource">%1$s , %2$s</string>
+    <string name="two_string_concat_text">%1$s %2$s</string>
+    <string name="text_percent">%1$s%</string>
+    <string name="latitude_value">Lat: %1$s</string>
+    <string name="longitude_value">Long: %1$s</string>
+</resources>

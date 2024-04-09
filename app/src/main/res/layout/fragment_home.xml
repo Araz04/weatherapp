@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_gradient_home_page"
+        android:padding="@dimen/default_padding_16dp">
+
+        <TextView
+            android:id="@+id/tvCityName"
+            style="@style/LabelMainXXXLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ejmiatsin" />
+
+        <TextView
+            android:id="@+id/tvDegree"
+            style="@style/LabelDegreeHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivWeatherType"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCityName"
+            tools:text="8" />
+
+        <ImageView
+            android:id="@+id/ivWeatherType"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toTopOf="@+id/tvDegree"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+            app:layout_constraintStart_toEndOf="@+id/tvDegree"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/ic_cloudy"/>
+
+        <TextView
+            android:id="@+id/tvMinMaxTempOfDay"
+            style="@style/LabelMainLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDegree"
+            tools:text="@string/weather_state_home" />
+
+        <TextView
+            android:id="@+id/tvPrecipitation"
+            style="@style/LabelDefaultLocationMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="0.0mm"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:drawablePadding="@dimen/default_padding_4dp"
+            android:layout_marginTop="@dimen/default_padding_8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMinMaxTempOfDay"
+            app:drawableStartCompat="@drawable/ic_material_drop" />
+
+        <TextView
+            android:id="@+id/tvWindSpeed"
+            style="@style/LabelDefaultLocationMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/default_padding_4dp"
+            tools:text="@string/lowest_highest_degree"
+            android:layout_marginStart="@dimen/default_padding_8dp"
+            app:layout_constraintStart_toEndOf="@id/tvPrecipitation"
+            app:layout_constraintTop_toTopOf="@id/tvPrecipitation"
+            app:layout_constraintBottom_toBottomOf="@id/tvPrecipitation"
+            app:drawableStartCompat="@drawable/ic_air" />
+
+        <TextView
+            android:id="@+id/tvThermo"
+            style="@style/LabelDefaultLocationMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/default_padding_4dp"
+            tools:text="@string/lowest_highest_degree"
+            android:layout_marginStart="@dimen/default_padding_8dp"
+            app:layout_constraintStart_toEndOf="@id/tvWindSpeed"
+            app:layout_constraintTop_toTopOf="@id/tvPrecipitation"
+            app:layout_constraintBottom_toBottomOf="@id/tvPrecipitation"
+            app:drawableStartCompat="@drawable/ic_termo" />
+
+        <TextView
+            android:id="@+id/tvPressure"
+            style="@style/LabelDefaultLocationMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/default_padding_4dp"
+            tools:text="@string/lowest_highest_degree"
+            android:layout_marginStart="@dimen/default_padding_8dp"
+            app:layout_constraintStart_toEndOf="@id/tvThermo"
+            app:layout_constraintTop_toTopOf="@id/tvPrecipitation"
+            app:layout_constraintBottom_toBottomOf="@id/tvPrecipitation"
+            app:drawableStartCompat="@drawable/ic_pressure_arrows" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_home_rectangle_seven_days_forecast"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvSevenDaysForecast" />
+
+        <TextView
+            android:id="@id/tvSevenDaysForecast"
+            style="@style/LabelMainLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding_16dp"
+            android:paddingTop="@dimen/default_padding_16dp"
+            android:text="@string/seven_days_forecast"
+            app:layout_constraintBottom_toTopOf="@id/rvSevenDaysForecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSevenDaysForecast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_padding_16dp"
+            android:layout_marginBottom="@dimen/default_padding_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

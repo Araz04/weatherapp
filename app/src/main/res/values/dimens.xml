@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding_4dp">4dp</dimen>
+    <dimen name="default_padding_8dp">8dp</dimen>
+    <dimen name="default_padding_12dp">12dp</dimen>
+    <dimen name="default_padding_16dp">16dp</dimen>
+    <dimen name="default_padding_24dp">24dp</dimen>
+    <dimen name="default_padding_32dp">32dp</dimen>
+
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_middle">14sp</dimen>
+    <dimen name="text_size_main">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_x_large">20sp</dimen>
+    <dimen name="text_size_xx_large">24sp</dimen>
+    <dimen name="text_size_xxx_large">38sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_home_degree">80sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="default_padding_64dp">64dp</dimen>
+
+</resources>
